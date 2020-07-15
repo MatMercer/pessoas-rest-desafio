@@ -6,13 +6,15 @@
 
 API de cadastro de pessoas com os dados:
 
-* Nome
-* Sexo
-* E-mail
-* Data de nascimento
-* Naturalidade
-* Nacionalidade
-* CPF
+|Field|Tipo
+|---|---|
+|Nome|String|
+|Sexo|Regex [ffmmoo]|
+|Email|String|
+|Data Nascimento|LocalDate|
+|Naturalidade|String|
+|Nacionalidade|String|
+|CPF|String|
 
 ## Campos obrigatórios
 
@@ -23,6 +25,7 @@ API de cadastro de pessoas com os dados:
 ## Validações
 
 * Nome      @NotBlank
+* Sexo      @Pattern(regex = "[FfOoMm])
 * Email     @Email
 * CPF
     * @CPF
