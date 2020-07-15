@@ -7,4 +7,6 @@ import net.matbm.pessoas.core.pessoas.entidade.Pessoa;
  */
 public interface PessoasGateway {
     Pessoa criarPessoa(Pessoa pessoa);
+
+    boolean cpfJaCadastrado(String cpf);
 }
