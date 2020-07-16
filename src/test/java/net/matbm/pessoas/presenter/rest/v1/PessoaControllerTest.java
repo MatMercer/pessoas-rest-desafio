@@ -1,6 +1,7 @@
 package net.matbm.pessoas.presenter.rest.v1;
 
 import net.matbm.pessoas.core.pessoas.usecase.CadastroPessoaUseCase;
+import net.matbm.pessoas.dataprovider.pessoa.PessoaDataProvider;
 import net.matbm.pessoas.presenter.rest.v1.mapper.PessoaRestMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(PessoaController.class)
+@WebMvcTest(value = PessoaController.class)
 @WithMockUser
 class PessoaControllerTest {
     @Autowired
@@ -22,6 +23,9 @@ class PessoaControllerTest {
 
     @MockBean
     CadastroPessoaUseCase useCase;
+
+    @MockBean
+    PessoaDataProvider pessoaDataProvider;
 
     @MockBean
     PessoaRestMapper mapper;
@@ -32,7 +36,7 @@ class PessoaControllerTest {
         mvc.perform(post("/v1/pessoas")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{}")
+                .content("{ \"nome\": \"Mercer\", \"cpf\": \"12345678909\", \"data_nascimento\": \"2019-01-22\" }")
         ).andExpect(status().is(201));
     }
 }

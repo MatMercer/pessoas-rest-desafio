@@ -1,5 +1,6 @@
 package net.matbm.pessoas.presenter.rest.v1.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
@@ -15,6 +16,7 @@ public class PessoaRequest {
     private String nome;
 
     @NotNull
+    @JsonProperty("data_nascimento")
     private LocalDate dataNascimento;
 
     @CPF
