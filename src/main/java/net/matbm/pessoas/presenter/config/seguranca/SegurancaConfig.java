@@ -1,4 +1,4 @@
-package net.matbm.pessoas.presenter.config.securanca;
+package net.matbm.pessoas.presenter.config.seguranca;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
