@@ -1,4 +1,4 @@
-# 002 - Listar Usuários
+# 002 - Listar Pessoas
 
 # Regra de negócio
 
