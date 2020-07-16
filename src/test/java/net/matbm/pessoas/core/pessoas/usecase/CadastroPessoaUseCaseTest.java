@@ -1,4 +1,4 @@
-package net.matbm.pessoas.core.pessoas;
+package net.matbm.pessoas.core.pessoas.usecase;
 
 import net.matbm.pessoas.core.erro.DadoDuplicadoException;
 import net.matbm.pessoas.core.pessoas.entidade.Pessoa;

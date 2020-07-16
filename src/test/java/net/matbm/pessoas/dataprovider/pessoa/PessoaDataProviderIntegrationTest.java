@@ -44,4 +44,12 @@ class PessoaDataProviderIntegrationTest {
                 .isTrue();
     }
 
+    @Test
+    @DisplayName("Deve listar todas as pessoas")
+    @Sql("classpath:sql/pessoa-exemplo.sql")
+    public void deveListarAsPessoas() {
+        assertThat(pessoaDataProvider.listarPessoas())
+                .hasSize(1);
+    }
+
 }

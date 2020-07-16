@@ -13,11 +13,11 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class PessoaTable {
     @Id
-    @Column(name = "NOME", nullable = false)
-    private String nome;
-
     @Column(name = "CPF", nullable = false)
     private String cpf;
+
+    @Column(name = "NOME", nullable = false, unique = true)
+    private String nome;
 
     @Column(name = "DATA_NASCIMENTO", nullable = false)
     private LocalDate dataNascimento;
