@@ -1,7 +1,12 @@
 package net.matbm.pessoas.presenter.rest.v1.request;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDate;
 
+@Data
+@NoArgsConstructor
 public class PessoaRequest {
     private String nome;
     private String sexo;
