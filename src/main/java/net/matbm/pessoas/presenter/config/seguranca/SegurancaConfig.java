@@ -18,8 +18,7 @@ public class SegurancaConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER);
 
         http.authorizeRequests()
-                .antMatchers("/", "/index.html", "/public").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/", "/index.html", "/swagger-ui.html").permitAll()
                 .and()
                 .httpBasic();
     }
