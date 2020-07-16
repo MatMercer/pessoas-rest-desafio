@@ -11,10 +11,11 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class PessoaDataProvider implements PessoasGateway {
     private final PessoaRepository repository;
+    private final PessoaTableMapper mapper;
 
     @Override
     public Pessoa criarPessoa(Pessoa pessoa) {
-        return null;
+        return mapper.toCore(repository.saveAndFlush(mapper.toTable(pessoa)));
     }
 
     @Override
