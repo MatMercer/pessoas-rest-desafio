@@ -1,5 +1,6 @@
 package net.matbm.pessoas.presenter.rest.v1;
 
+import net.matbm.pessoas.core.pessoas.usecase.AtualizarPessoaUseCase;
 import net.matbm.pessoas.core.pessoas.usecase.CadastroPessoaUseCase;
 import net.matbm.pessoas.core.pessoas.usecase.ListarPessoasUseCase;
 import net.matbm.pessoas.dataprovider.pessoa.PessoaDataProvider;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -16,6 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.Collections;
 
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -35,6 +38,9 @@ class PessoaControllerTest {
 
     @MockBean
     PessoaDataProvider pessoaDataProvider;
+
+    @MockBean
+    AtualizarPessoaUseCase atualizarPessoaUseCase;
 
     @MockBean
     PessoaRestMapper mapper;
@@ -59,5 +65,16 @@ class PessoaControllerTest {
                 .accept(MediaType.APPLICATION_JSON)
         ).andExpect(status().is(200))
                 .andExpect(content().string("[]"));
+    }
+
+    @Test
+    @DisplayName("Deve atualizar uma pessoa")
+    void atualizarPessoa() throws Exception {
+        mvc.perform(put("/v1/pessoas")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{ \"nome\": \"Mercer\", \"cpf\": \"12345678909\", \"data_nascimento\": \"2019-01-22\" }")
+        ).andExpect(status().is(204))
+                .andExpect(content().string(""));
     }
 }
