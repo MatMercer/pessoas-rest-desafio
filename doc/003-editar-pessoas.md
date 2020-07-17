@@ -5,7 +5,7 @@
 ## Premissa
 
 Chamar um endpoint com PUT. Caso a pessoa não exista, retornar 404.
-Caso exista, e cpf for igual ao atual, e já não existir no banco, atualizar.
+Caso exista, atualizar.
 
 ## Detalhamento técnico
 
@@ -16,10 +16,6 @@ EditarPessoaUseCase   -- chama -> PessoasGateway.pesquisaPorCPF(cpf)
 Optional Vazio?
     -- sim -> throw NaoEncontradoException()
 pessoaAtualizada = Optional.get()
-pessoaAtualizada.cpf == request.cpf?
-    -- sim -> gateway.atualizarPessoa(pessoa)
-    -- não -> PessoasGateway.cpfExiste(request.cpf)
-            -- sim -> throw CpfDuplicadoException()
-            -- não -> gateway.atualizarPessoa(pessoa)
+gateway.atualizarPessoa(pessoa)
 ```
 

@@ -34,4 +34,9 @@ public class PessoaDataProvider implements PessoasGateway {
                 .map(mapper::toCore)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public void atualizarPessoa(Pessoa pessoa) {
+        // TODO: implementar
+    }
 }
