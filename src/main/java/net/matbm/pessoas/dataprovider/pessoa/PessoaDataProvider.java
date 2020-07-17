@@ -36,7 +36,8 @@ public class PessoaDataProvider implements PessoasGateway {
     }
 
     @Override
+    @Transactional
     public void atualizarPessoa(Pessoa pessoa) {
-        // TODO: implementar
+        repository.save(mapper.toTable(pessoa));
     }
 }

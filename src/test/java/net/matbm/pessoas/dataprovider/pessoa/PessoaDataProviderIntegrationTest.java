@@ -52,4 +52,19 @@ class PessoaDataProviderIntegrationTest {
                 .hasSize(1);
     }
 
+    @Test
+    @DisplayName("Deve atualizar uma pessoa")
+    @Sql("classpath:sql/pessoa-exemplo.sql")
+    public void atualizarPessoa() {
+        Pessoa pessoaParaAtualizar = pessoaDataProvider.listarPessoas().get(0);
+        pessoaParaAtualizar.setNome("Outro nome");
+
+        pessoaDataProvider.atualizarPessoa(pessoaParaAtualizar);
+
+        Pessoa pessoaAtualizada = pessoaDataProvider.listarPessoas().get(0);
+
+        assertThat(pessoaAtualizada.getNome())
+                .isEqualTo("Outro nome");
+    }
+
 }
