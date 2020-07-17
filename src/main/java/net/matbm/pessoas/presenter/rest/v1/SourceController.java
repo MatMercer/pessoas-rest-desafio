@@ -1,6 +1,7 @@
 package net.matbm.pessoas.presenter.rest.v1;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ResourceUtils;
@@ -23,8 +24,8 @@ public class SourceController {
     @GetMapping(value = "/source", produces = "text/html")
     public ResponseEntity<String> source() {
         try {
-            var file = ResourceUtils.getFile("classpath:source.html");
-            var stream = new FileInputStream(file);
+            var file = new ClassPathResource("source.html");
+            var stream = file.getInputStream();
             var bytes = stream.readAllBytes();
 
             return ResponseEntity.ok(new String(bytes, 0, bytes.length, StandardCharsets.UTF_8));
