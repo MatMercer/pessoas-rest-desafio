@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>API Pessoas Rest</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<section id="main" class="container mt-2">
+    <div class="col-12">
+        <h1>Código fonte da API</h1>
+        <p>
+            <a href="https://github.com/MatMercer/pessoas-rest-desafio" target="_blank">Disponível no Github</a>
+        </p>
+        <p>
+            <a href="/swagger-ui.html" target="_blank">Acesso ao Swagger</a>
+        </p>
+
+        <h1>Para rodar o projeto</h1>
+        <pre>docker run -p 8080:8080/tcp matmercer/pessoas-rest</pre>
+
+        <h2>JSON exemplo</h2>
+        <p>As requests são validadas no back-end, então é necessário ter um json válido.</p>
+        <p>Field CPF não aceita máscara, pontos etc etc.</p>
+        <pre>
+{
+  "nome": "Mateus Mercer",
+  "cpf": "12345678909",
+  "email": "contato@matbm.net",
+  "sexo": "M",
+  "naturalidade": "Brasileira",
+  "nacionalidade": "Londrinense",
+  "data_nascimento": "1999-01-01"
+}
+        </pre>
+
+        <h1>Explicações</h1>
+        <p>
+            OK eu confesso, recebi o e-mail do desafio dia 10/07/2020, porém só vi ele dia 14/07/2020 quando fiz a
+            entrevista. Então, tive que correr. Trabalho 8 horas por dia, logo, implementei o que dava com o tempo.
+            Usei a técnica de TDD. Fiz pouco, mas tenho certeza que o pouco que fiz, funciona.
+        </p>
+
+        <h2>O que foi implementado</h2>
+        <ul>
+            <li>CRUD de pessoas</li>
+            <li>Validações de todos os campos, (todos testados com um tester customizado meu)</li>
+            <li>Clean architecture</li>
+            <li>Testes unitários em todas as camadas com 100% de coverage em partes críticas</li>
+            <li>Swagger</li>
+            <li>Aplicação rodando em Docker no meu servidor pessoal</li>
+            <li>Mapeamento com StructMap</li>
+        </ul>
+
+        <h2>O que faltou/eu queria implementar mas não deu devido ao tempo</h2>
+        <h3>Todos os itens eu sei fazer</h3>
+        <ul>
+            <li>Um front-end (poderia ter feito em JQuery ou Angular, ou até msm JS puro)</li>
+            <li>Autenticação via basic/oauth2</li>
+            <li>Testes de arquitetura com Archunit</li>
+            <li>Uma documentação melhor no swagger</li>
+            <li>Um módulo do Jackson para fazer trim de todas as Strings no sistema</li>
+            <li>Versão 2.0 modificada</li>
+            <li>Logging</li>
+        </ul>
+    </div>
+</section>
+</body>
+</html>
