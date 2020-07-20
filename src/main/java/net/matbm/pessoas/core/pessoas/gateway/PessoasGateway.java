@@ -9,11 +9,13 @@ import java.util.Optional;
  * Gateway para persistir/consultar/atualizar/deletar a entidade Pessoa
  */
 public interface PessoasGateway {
-    Pessoa criarPessoa(Pessoa pessoa);
-
     boolean cpfJaCadastrado(String cpf);
+
+    Pessoa criarPessoa(Pessoa pessoa);
 
     List<Pessoa> listarPessoas();
 
     void atualizarPessoa(Pessoa pessoa);
+
+    void deletarPorCpf(String cpf);
 }

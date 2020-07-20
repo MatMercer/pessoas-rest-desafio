@@ -40,4 +40,9 @@ public class PessoaDataProvider implements PessoasGateway {
     public void atualizarPessoa(Pessoa pessoa) {
         repository.save(mapper.toTable(pessoa));
     }
+
+    @Override
+    public void deletarPorCpf(String cpf) {
+
+    }
 }
