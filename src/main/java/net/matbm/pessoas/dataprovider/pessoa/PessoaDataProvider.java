@@ -42,7 +42,8 @@ public class PessoaDataProvider implements PessoasGateway {
     }
 
     @Override
+    @Transactional
     public void deletarPorCpf(String cpf) {
-
+        repository.deleteById(cpf);
     }
 }

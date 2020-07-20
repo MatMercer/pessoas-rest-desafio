@@ -67,4 +67,13 @@ class PessoaDataProviderIntegrationTest {
                 .isEqualTo("Outro nome");
     }
 
+    @Test
+    @DisplayName("Deve deletar uma pessoa pelo cpf")
+    @Sql("classpath:sql/pessoa-exemplo.sql")
+    public void deletarPorCpf() {
+        pessoaDataProvider.deletarPorCpf("012345678909");
+
+        assertThat(pessoaRepository.findAll())
+                .isEmpty();
+    }
 }
