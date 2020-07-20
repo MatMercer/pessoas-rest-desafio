@@ -1,7 +1,5 @@
 package net.matbm.pessoas.core.pessoas.entidade;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

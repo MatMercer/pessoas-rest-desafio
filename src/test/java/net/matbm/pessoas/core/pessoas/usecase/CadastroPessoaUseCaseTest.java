@@ -3,7 +3,6 @@ package net.matbm.pessoas.core.pessoas.usecase;
 import net.matbm.pessoas.core.erro.DadoDuplicadoException;
 import net.matbm.pessoas.core.pessoas.entidade.Pessoa;
 import net.matbm.pessoas.core.pessoas.gateway.PessoasGateway;
-import net.matbm.pessoas.core.pessoas.usecase.CadastroPessoaUseCase;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
