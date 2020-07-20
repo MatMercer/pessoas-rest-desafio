@@ -2,6 +2,7 @@ package net.matbm.pessoas.presenter.rest.v1;
 
 import net.matbm.pessoas.core.pessoas.usecase.AtualizarPessoaUseCase;
 import net.matbm.pessoas.core.pessoas.usecase.CadastroPessoaUseCase;
+import net.matbm.pessoas.core.pessoas.usecase.DeletarPessoaUseCase;
 import net.matbm.pessoas.core.pessoas.usecase.ListarPessoasUseCase;
 import net.matbm.pessoas.dataprovider.pessoa.PessoaDataProvider;
 import net.matbm.pessoas.presenter.rest.v1.mapper.PessoaRestMapper;
@@ -17,12 +18,10 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Collections;
 
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(value = PessoaController.class)
 @WithMockUser
@@ -41,6 +40,9 @@ class PessoaControllerTest {
 
     @MockBean
     AtualizarPessoaUseCase atualizarPessoaUseCase;
+
+    @MockBean
+    DeletarPessoaUseCase deletarPessoaUseCase;
 
     @MockBean
     PessoaRestMapper mapper;
@@ -76,5 +78,19 @@ class PessoaControllerTest {
                 .content("{ \"nome\": \"Mercer\", \"cpf\": \"12345678909\", \"data_nascimento\": \"2019-01-22\" }")
         ).andExpect(status().is(204))
                 .andExpect(content().string(""));
+    }
+
+    @Test
+    @DisplayName("Deve deletar uma pessoa")
+    void deletarPessoa() throws Exception {
+        mvc.perform(delete("/v1/pessoas")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{\"cpf\": \"12345678909\"}")
+        ).andExpect(status().is(HttpStatus.NO_CONTENT.value()))
+                .andExpect(content().string(""));
+
+        verify(deletarPessoaUseCase, times(1))
+                .deletarPorCpf("12345678909");
     }
 }
